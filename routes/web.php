@@ -16,8 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//rotas cpm parametros
-Route::get("/testeNome/{nome?}", function($nome=null){
+Route::get("profile", "App\Http\Controllers\MeuController@profile");
+Route::get("profile/{n1}/{n2}", "App\Http\Controllers\MeuController@multi");
+
+Route::resource("user", "App\Http\Controllers\MyController");
+
+
+//rotas com parametros
+/*Route::get("/testeNome/{nome?}", function($nome=null){
     if(isset($nome))
         return "Ola, seja bem-vindo, $nome!";
     return "Você não digitou nenhum nome!";
@@ -37,4 +43,4 @@ Route::prefix("/app")->group(function(){
     Route::get('/profile', function(){
         return view('profile');
     })->name('profile');
-});
+});*/
